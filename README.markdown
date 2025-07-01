@@ -6,14 +6,7 @@ A **Natural Language Processing (NLP)** web app that classifies real disaster me
 
 This project trains a machine learning model to classify disaster response messages. It uses data from real-world events and is designed to support disaster relief efforts by automating the categorization of incoming text messages.
 
-## How It Works
-
-- Preprocesses raw messages and categories from CSV files.
-- Builds a machine learning pipeline using NLP (tokenization, lemmatization) + a `RandomForestClassifier` wrapped in `MultiOutputClassifier`.
-- Saves the trained model as `classifier.pkl`.
-- Loads the model in a Flask web app where users can enter messages and get instant predictions for 36+ categories.
-
-## 🛠️ Instructions
+## Instructions
 
 1. **Run the ETL pipeline**
 
