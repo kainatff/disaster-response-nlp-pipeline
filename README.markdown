@@ -63,5 +63,3 @@ This project trains a machine learning model to classify disaster response messa
 - Pandas, NumPy, Scikit-learn, NLTK, SQLAlchemy, Flask, Plotly, joblib
 
 <img src="./images/2.png" width="90%">
-
-<img src="./images/1.png" width="90%">
