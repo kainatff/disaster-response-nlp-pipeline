@@ -4,11 +4,8 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
-    """Load data into dataframe from csv files and merge them.
+    # loading data into dataframe from csv files and merging them.
     
-    Returns:
-    df: dataframe
-    """
     
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
@@ -16,14 +13,7 @@ def load_data(messages_filepath, categories_filepath):
     return df
 
 def clean_data(df):
-    """Clean category data and expand them into independent columns.
-
-    Args:
-    df: Dataframe consisting of category column
-
-    Returns:
-    df: Cleaned dataframe with independent category columns
-    """
+    # cleaning category data and expanding them into independent columns.
     
     category_vals = df.categories
     new_vals = []
