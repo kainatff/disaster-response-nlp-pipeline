@@ -3,7 +3,9 @@ import plotly
 import pandas as pd
 
 from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import TreebankWordTokenizer
+import nltk 
+nltk.download('punkt')
 
 from flask import Flask
 from flask import render_template, request, jsonify
@@ -13,17 +15,13 @@ from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
+tokenizer = TreebankWordTokenizer()
+lemmatizer = WordNetLemmatizer()
+
 def tokenize(text):
-    # cleaning and tokenizing data received
     
-    tokens = word_tokenize(text)
-    lemmatizer = WordNetLemmatizer()
-    
-    clean_tokens = []
-    for tok in tokens:
-        clean_tok = lemmatizer.lemmatize(tok).lower().strip()
-        clean_tokens.append(clean_tok)
-        
+    tokens = tokenizer.tokenize(text)
+    clean_tokens = [lemmatizer.lemmatize(tok).lower().strip() for tok in tokens]
     return clean_tokens
 
 # loading data
@@ -130,10 +128,12 @@ def go():
     print("classification results", classification_results)
     
     return render_template(
-        'go.html',
-        query=query,
-        classification_result=classification_results
-    )
+    'go.html',
+    query=query,
+    classification_result=classification_results,
+    graphJSON=json.dumps([]),
+    ids=[]
+)
     
     
 def main():
